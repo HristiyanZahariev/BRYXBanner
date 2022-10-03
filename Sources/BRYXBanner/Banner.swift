@@ -51,6 +51,9 @@ open class Banner: UIView {
     /// How long the slide down animation should last.
     @objc open var animationDuration: TimeInterval = 0.4
     
+    /// Icon size
+    @objc open var iconSize: CGSize = CGSize(width: 48, height: 48)
+    
     /// The preferred style of the status bar during display of the banner. Defaults to `.LightContent`.
     ///
     /// If the banner's `adjustsStatusBarStyle` is false, this property does nothing.
@@ -272,8 +275,8 @@ open class Banner: UIView {
             contentView.addSubview(imageView)
             contentView.addConstraint(imageView.constraintWithAttribute(.leading, .equal, to: contentView, constant: 15.0))
             contentView.addConstraint(imageView.constraintWithAttribute(.centerY, .equal, to: contentView))
-            imageView.addConstraint(imageView.constraintWithAttribute(.width, .equal, to: 25.0))
-            imageView.addConstraint(imageView.constraintWithAttribute(.height, .equal, to: .width))
+            imageView.addConstraint(imageView.constraintWithAttribute(.width, .equal, to: iconSize.width))
+            imageView.addConstraint(imageView.constraintWithAttribute(.height, .equal, to: iconSize.height))
             leftConstraintText = "[imageView]"
         }
         let constraintFormat = "H:\(leftConstraintText)-(15)-[labelView]-(8)-|"
